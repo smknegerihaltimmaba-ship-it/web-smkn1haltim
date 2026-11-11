@@ -391,106 +391,43 @@
         </div>
     </div>
 
-    <!-- Scripts -->
     <script>
-        // Navbar scroll effect
-        const navbar = document.getElementById('navbar');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 20) {
-                navbar.classList.add('shadow-lg', 'bg-white/95');
-                navbar.classList.remove('bg-white/80', 'shadow-sm');
-            } else {
-                navbar.classList.add('bg-white/80', 'shadow-sm');
-                navbar.classList.remove('shadow-lg', 'bg-white/95');
-            }
-        });
+  const loginForm = document.querySelector('form');
+  // URL ini sudah menggunakan API Google Apps Script Anda
+  const scriptURL = 'https://script.google.com/macros/s/AKfycbwoDOArXwWO2rFVse_80PNy-gDpf-kthAKu1PBHg5dBAA6co1B0E96KBrj_itSb5Nce/exec'; 
 
-        // Mobile Menu Toggle
-        const btn = document.getElementById('mobile-menu-btn');
-        const menu = document.getElementById('mobile-menu');
-        const icon = btn.querySelector('i');
+  loginForm.addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    const btnSubmit = loginForm.querySelector('button[type="submit"]');
+    const originalText = btnSubmit.innerHTML;
+    btnSubmit.innerHTML = 'Memeriksa...';
+    btnSubmit.disabled = true;
 
-        btn.addEventListener('click', () => {
-            menu.classList.toggle('hidden');
-            if(menu.classList.contains('hidden')) {
-                icon.classList.remove('fa-times');
-                icon.classList.add('fa-bars');
-            } else {
-                icon.classList.remove('fa-bars');
-                icon.classList.add('fa-times');
-            }
-        });
+    const user = document.getElementById('username').value;
+    const pass = document.getElementById('password').value;
 
-        // Close mobile menu on link click
-        menu.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', () => {
-                menu.classList.add('hidden');
-                icon.classList.remove('fa-times');
-                icon.classList.add('fa-bars');
-            });
-        });
-
-        // Modal Logic
-        const modal = document.getElementById('loginModal');
-        const modalContent = document.getElementById('loginModalContent');
-
-        function openLoginModal() {
-            modal.classList.remove('hidden');
-            modal.classList.add('flex');
-            
-            // Allow small delay for display:flex to apply before animating opacity
-            setTimeout(() => {
-                modal.classList.remove('opacity-0');
-                modalContent.classList.remove('scale-95');
-                modalContent.classList.add('scale-100');
-            }, 10);
-            
-            // Close mobile menu if open
-            menu.classList.add('hidden');
-            icon.classList.remove('fa-times');
-            icon.classList.add('fa-bars');
-        }
-
-        function closeLoginModal() {
-            modal.classList.add('opacity-0');
-            modalContent.classList.remove('scale-100');
-            modalContent.classList.add('scale-95');
-            
-            setTimeout(() => {
-                modal.classList.add('hidden');
-                modal.classList.remove('flex');
-                
-                // Reset form and feedback
-                document.getElementById('loginForm').reset();
-                const feedback = document.getElementById('loginFeedback');
-                feedback.classList.add('hidden');
-            }, 300);
-        }
-
-        // Handle Login Submission
-        function handleLogin(e) {
-            e.preventDefault(); // Prevent page reload
-            
-            const btn = e.target.querySelector('button[type="submit"]');
-            const originalText = btn.innerHTML;
-            const feedback = document.getElementById('loginFeedback');
-            
-            // Show loading state
-            btn.innerHTML = '<i class="fa-solid fa-circle-notch fa-spin"></i> Memproses...';
-            btn.disabled = true;
-            
-            // Simulate network request
-            setTimeout(() => {
-                btn.innerHTML = originalText;
-                btn.disabled = false;
-                
-                // Show message instead of alert
-                feedback.classList.remove('hidden', 'bg-green-100', 'text-green-700');
-                feedback.classList.add('bg-red-100', 'text-red-700');
-                feedback.innerHTML = '<i class="fa-solid fa-triangle-exclamation mr-1"></i> Username atau password salah. Ini adalah versi demo.';
-                
-            }, 1000);
-        }
-    </script>
+    fetch(scriptURL, {
+      method: 'POST',
+      body: JSON.stringify({ username: user, password: pass })
+    })
+    .then(response => response.json())
+    .then(data => {
+      if (data.status === 'success') {
+        alert('Login Berhasil! Mengalihkan ke Dashboard...');
+        window.location.href = 'dashboard.html'; 
+      } else {
+        alert('Gagal: Username atau Password salah!');
+        btnSubmit.innerHTML = originalText;
+        btnSubmit.disabled = false;
+      }
+    })
+    .catch(error => {
+      alert('Terjadi kesalahan jaringan!');
+      btnSubmit.innerHTML = originalText;
+      btnSubmit.disabled = false;
+    });
+  });
+</script>
 </body>
 </html>
