@@ -89,16 +89,16 @@
         <div class="max-w-7xl mx-auto flex flex-wrap justify-between items-center gap-2">
             <div class="flex flex-wrap items-center gap-4">
                 <span class="flex items-center gap-1.5 font-medium text-amber-400">
-                    <i class="fa-solid fa-certificate"></i> NPSN: 60200659 (Terakreditasi B)
+                    <i class="fa-solid fa-certificate"></i> NPSN: <span id="top-npsn">60200659</span> (<span id="top-akreditasi">Terakreditasi B</span>)
                 </span>
                 <span class="hidden md:flex items-center gap-1.5">
-                    <i class="fa-solid fa-location-dot text-sky-400"></i> Desa Soa Gimalaha, Kec. Kota Maba, Kab. Halmahera Timur
+                    <i class="fa-solid fa-location-dot text-sky-400"></i> <span id="top-alamat-short">Desa Soa Gimalaha, Kec. Kota Maba, Kab. Halmahera Timur</span>
                 </span>
-                <a href="mailto:smkn1maba@gmail.com" class="hidden lg:flex items-center gap-1.5 hover:text-white transition">
-                    <i class="fa-solid fa-envelope text-emerald-400"></i> smkn1maba@gmail.com
+                <a id="top-email-link" href="mailto:smkn1maba@gmail.com" class="hidden lg:flex items-center gap-1.5 hover:text-white transition">
+                    <i class="fa-solid fa-envelope text-emerald-400"></i> <span id="top-email-text">smkn1maba@gmail.com</span>
                 </a>
-                <span id="db-sync-indicator" class="hidden xl:inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-brand-800 text-[10px] text-emerald-300 border border-emerald-500/30">
-                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping"></span> Cloud Sheets Aktif
+                <span class="hidden xl:inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-brand-800 text-[10px] text-emerald-300 border border-emerald-500/30">
+                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping"></span> Cloud Sheets Sync
                 </span>
             </div>
             <div class="flex items-center gap-4 ml-auto">
@@ -150,10 +150,10 @@
                         <i id="theme-icon" class="fa-solid fa-moon text-base"></i>
                     </button>
 
-                    <!-- SIAKAD Portal Button -->
+                    <!-- SIAKAD & Admin Portal Button -->
                     <button onclick="openLoginModal()" class="hidden sm:inline-flex items-center gap-2 bg-brand-600 hover:bg-brand-700 text-white font-semibold text-sm px-4 py-2.5 rounded-xl shadow-md shadow-brand-600/20 transition active:scale-95">
                         <i class="fa-solid fa-user-shield"></i>
-                        <span>Portal SIAKAD</span>
+                        <span>Portal SIAKAD / Admin</span>
                     </button>
 
                     <!-- Mobile Hamburger Button -->
@@ -175,7 +175,7 @@
             <a href="#kontak" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-xl font-medium hover:bg-slate-100 dark:hover:bg-slate-800">Hubungi Kami</a>
             <div class="pt-2">
                 <button onclick="openLoginModal(); toggleMobileMenu();" class="w-full flex items-center justify-center gap-2 bg-brand-600 text-white font-semibold py-3 rounded-xl shadow">
-                    <i class="fa-solid fa-right-to-bracket"></i> Login Portal SIAKAD
+                    <i class="fa-solid fa-right-to-bracket"></i> Login SIAKAD / Admin CMS
                 </button>
             </div>
         </div>
@@ -260,11 +260,11 @@
                             </div>
                             <div class="flex justify-between py-2 border-b border-white/10">
                                 <span class="text-slate-300">Nomor Pokok (NPSN)</span>
-                                <span class="font-mono font-bold text-white bg-white/10 px-2.5 py-0.5 rounded">60200659</span>
+                                <span id="hero-npsn" class="font-mono font-bold text-white bg-white/10 px-2.5 py-0.5 rounded">60200659</span>
                             </div>
                             <div class="flex justify-between py-2 border-b border-white/10">
                                 <span class="text-slate-300">Status / Akreditasi</span>
-                                <span class="font-semibold text-white">Negeri / Terakreditasi B</span>
+                                <span id="hero-akreditasi" class="font-semibold text-white">Negeri / Terakreditasi B</span>
                             </div>
                             <div class="flex justify-between py-2 border-b border-white/10">
                                 <span class="text-slate-300">Kecamatan / Desa</span>
@@ -272,12 +272,12 @@
                             </div>
                             <div class="flex justify-between py-2">
                                 <span class="text-slate-300">Telepon / Layanan</span>
-                                <span class="font-semibold text-emerald-300">0853-1188-4115</span>
+                                <span id="hero-telepon" class="font-semibold text-emerald-300">0853-1188-4115</span>
                             </div>
                         </div>
 
                         <div class="mt-6 grid grid-cols-2 gap-3">
-                            <a href="#profil" class="text-center py-2.5 px-4 rounded-xl bg-white/10 hover:bg-white/20 text-xs font-semibold text-white transition">
+                            <a href="#profil" onclick="switchProfileTab('identitas')" class="text-center py-2.5 px-4 rounded-xl bg-white/10 hover:bg-white/20 text-xs font-semibold text-white transition">
                                 <i class="fa-solid fa-id-card mr-1.5 text-amber-300"></i> Detail Dapodik
                             </a>
                             <a href="#pkl-bkk" class="text-center py-2.5 px-4 rounded-xl bg-brand-500 hover:bg-brand-400 text-xs font-semibold text-white transition">
@@ -295,7 +295,7 @@
                         <i class="fa-solid fa-microchip"></i>
                     </div>
                     <div>
-                        <div class="text-2xl sm:text-3xl font-display font-extrabold text-white">3+ Program</div>
+                        <div id="stat-val-program" class="text-2xl sm:text-3xl font-display font-extrabold text-white">3+ Program</div>
                         <div class="text-xs sm:text-sm text-slate-300">Kompetensi Keahlian Unggulan</div>
                     </div>
                 </div>
@@ -304,7 +304,7 @@
                         <i class="fa-solid fa-users-gear"></i>
                     </div>
                     <div>
-                        <div class="text-2xl sm:text-3xl font-display font-extrabold text-white">420+ Siswa</div>
+                        <div id="stat-val-siswa" class="text-2xl sm:text-3xl font-display font-extrabold text-white">420+ Siswa</div>
                         <div class="text-xs sm:text-sm text-slate-300">Peserta Didik Vokasi Aktif</div>
                     </div>
                 </div>
@@ -313,7 +313,7 @@
                         <i class="fa-solid fa-handshake-angle"></i>
                     </div>
                     <div>
-                        <div class="text-2xl sm:text-3xl font-display font-extrabold text-white">25+ Mitra</div>
+                        <div id="stat-val-mitra" class="text-2xl sm:text-3xl font-display font-extrabold text-white">25+ Mitra</div>
                         <div class="text-xs sm:text-sm text-slate-300">DUDIKA, Pemda & Kampus PKL</div>
                     </div>
                 </div>
@@ -322,7 +322,7 @@
                         <i class="fa-solid fa-award"></i>
                     </div>
                     <div>
-                        <div class="text-2xl sm:text-3xl font-display font-extrabold text-white">Akreditasi B</div>
+                        <div id="stat-val-akreditasi" class="text-2xl sm:text-3xl font-display font-extrabold text-white">Akreditasi B</div>
                         <div class="text-xs sm:text-sm text-slate-300">Standar Nasional BAN-PDM</div>
                     </div>
                 </div>
@@ -358,22 +358,22 @@
             <div class="grid lg:grid-cols-12 gap-8 items-center">
                 <div class="lg:col-span-4 text-center">
                     <div class="relative mx-auto w-56 h-64 rounded-2xl overflow-hidden bg-gradient-to-b from-brand-700 to-brand-950 p-1 shadow-xl">
-                        <img src="https://placehold.co/400x480/1e3a8a/fbbf24?text=Kepala+Sekolah%0ASMKN+1+Maba" alt="Kepala Sekolah SMKN 1 Halmahera Timur" class="w-full h-full object-cover rounded-xl">
+                        <img id="ui-foto-kepsek" src="https://placehold.co/400x480/1e3a8a/fbbf24?text=Kepala+Sekolah%0ASMKN+1+Maba" alt="Kepala Sekolah SMKN 1 Halmahera Timur" class="w-full h-full object-cover rounded-xl">
                     </div>
                     <div class="mt-4">
-                        <h3 class="font-display font-bold text-lg text-slate-900 dark:text-white">Kepala SMK Negeri 1 Halmahera Timur</h3>
-                        <p class="text-xs text-brand-600 dark:text-amber-400 font-semibold">Dinas Pendidikan & Kebudayaan Prov. Maluku Utara</p>
+                        <h3 id="ui-nama-kepsek" class="font-display font-bold text-lg text-slate-900 dark:text-white">Kepala SMK Negeri 1 Halmahera Timur</h3>
+                        <p id="ui-jabatan-kepsek" class="text-xs text-brand-600 dark:text-amber-400 font-semibold">Dinas Pendidikan & Kebudayaan Prov. Maluku Utara</p>
                     </div>
                 </div>
                 <div class="lg:col-span-8 space-y-4 text-slate-600 dark:text-slate-300 leading-relaxed">
                     <div class="inline-flex items-center gap-2 text-amber-600 dark:text-amber-400 font-semibold text-sm">
                         <i class="fa-solid fa-quote-left text-lg"></i>
-                        <span>Assalamu’alaikum Warahmatullahi Wabarakatuh, Salam Sejahtera & Salam Vokasi!</span>
+                        <span id="ui-salam-pembuka">Assalamu’alaikum Warahmatullahi Wabarakatuh, Salam Sejahtera & Salam Vokasi!</span>
                     </div>
-                    <p>
+                    <p id="ui-sambutan-1">
                         Puji syukur kita panjatkan ke hadirat Tuhan Yang Maha Esa. Sebagai salah satu sekolah menengah kejuruan negeri rujukan di Kabupaten Halmahera Timur, <strong>SMK Negeri 1 Halmahera Timur (SMKN 1 Maba)</strong> terus bertransformasi menjawab tantangan era industri modern dan pembangunan daerah di kawasan Maluku Utara.
                     </p>
-                    <p>
+                    <p id="ui-sambutan-2">
                         Melalui penerapan <strong>Kurikulum Merdeka</strong>, kami menitikberatkan pembelajaran pada penguatan <em>hard skills</em> di Ruang Praktik Siswa (RPS), pembinaan karakter Profil Pelajar Pancasila, serta perluasan jejaring Praktik Kerja Lapangan (PKL) bersama instansi pemerintah, BUMN, dunia usaha/industri (DUDIKA), maupun perguruan tinggi di Maluku Utara.
                     </p>
                     <div class="pt-3 grid sm:grid-cols-3 gap-4">
@@ -400,13 +400,13 @@
                 <div class="space-y-6">
                     <div class="p-6 rounded-2xl bg-gradient-to-br from-brand-700 to-brand-900 text-white shadow-lg">
                         <span class="text-xs font-bold uppercase tracking-widest text-amber-300">Visi Sekolah</span>
-                        <h3 class="font-display font-bold text-xl sm:text-2xl mt-2 leading-snug">
+                        <h3 id="ui-visi" class="font-display font-bold text-xl sm:text-2xl mt-2 leading-snug">
                             "Terwujudnya Lulusan SMK Negeri 1 Halmahera Timur yang Beriman, Berkarakter, Kompeten, Mandiri, dan Mampu Bersaing di Dunia Kerja Global."
                         </h3>
                     </div>
                     <div class="p-6 rounded-2xl bg-amber-50 dark:bg-amber-950/30 border border-amber-200 dark:border-amber-800/60">
                         <span class="text-xs font-bold uppercase tracking-widest text-amber-700 dark:text-amber-400">Motto Vokasi SMKN 1 Maba</span>
-                        <div class="font-display font-extrabold text-2xl text-slate-900 dark:text-white mt-1">
+                        <div id="ui-motto" class="font-display font-extrabold text-2xl text-slate-900 dark:text-white mt-1">
                             "SMK Bisa, SMK Hebat — Kompeten, Berkarakter, Siap Kerja!"
                         </div>
                         <p class="text-xs text-slate-600 dark:text-slate-400 mt-2">
@@ -422,19 +422,19 @@
                     <ul class="space-y-3.5 text-sm text-slate-600 dark:text-slate-300">
                         <li class="flex items-start gap-3 p-3.5 rounded-xl bg-slate-50 dark:bg-slate-800/60">
                             <span class="w-6 h-6 rounded-full bg-brand-600 text-white text-xs font-bold flex items-center justify-center shrink-0 mt-0.5">1</span>
-                            <span>Menyelenggarakan pendidikan kejuruan berbasis <strong>Kurikulum Merdeka</strong> yang adaptif terhadap perkembangan teknologi informasi, ketenagalistrikan, dan konstruksi.</span>
+                            <span id="ui-misi-1">Menyelenggarakan pendidikan kejuruan berbasis Kurikulum Merdeka yang adaptif terhadap perkembangan teknologi informasi, ketenagalistrikan, dan konstruksi.</span>
                         </li>
                         <li class="flex items-start gap-3 p-3.5 rounded-xl bg-slate-50 dark:bg-slate-800/60">
                             <span class="w-6 h-6 rounded-full bg-brand-600 text-white text-xs font-bold flex items-center justify-center shrink-0 mt-0.5">2</span>
-                            <span>Meningkatkan kualitas sarana Ruang Praktik Siswa (RPS) dan kompetensi pendidik sesuai standar Dunia Usaha dan Dunia Industri Kerja (DUDIKA).</span>
+                            <span id="ui-misi-2">Meningkatkan kualitas sarana Ruang Praktik Siswa (RPS) dan kompetensi pendidik sesuai standar Dunia Usaha dan Dunia Industri Kerja (DUDIKA).</span>
                         </li>
                         <li class="flex items-start gap-3 p-3.5 rounded-xl bg-slate-50 dark:bg-slate-800/60">
                             <span class="w-6 h-6 rounded-full bg-brand-600 text-white text-xs font-bold flex items-center justify-center shrink-0 mt-0.5">3</span>
-                            <span>Memperluas jejaring kerja sama Praktik Kerja Lapangan (PKL) dan penyerapan lulusan melalui Bursa Kerja Khusus (BKK) di wilayah Maluku Utara dan nasional.</span>
+                            <span id="ui-misi-3">Memperluas jejaring kerja sama Praktik Kerja Lapangan (PKL) dan penyerapan lulusan melalui Bursa Kerja Khusus (BKK) di wilayah Maluku Utara dan nasional.</span>
                         </li>
                         <li class="flex items-start gap-3 p-3.5 rounded-xl bg-slate-50 dark:bg-slate-800/60">
                             <span class="w-6 h-6 rounded-full bg-brand-600 text-white text-xs font-bold flex items-center justify-center shrink-0 mt-0.5">4</span>
-                            <span>Menumbuhkan jiwa kewirausahaan (<em>technopreneurship</em>), disiplin kerja, keselamatan kerja (K3LH), dan budi pekerti luhur bagi seluruh peserta didik.</span>
+                            <span id="ui-misi-4">Menumbuhkan jiwa kewirausahaan (technopreneurship), disiplin kerja, keselamatan kerja (K3LH), dan budi pekerti luhur bagi seluruh peserta didik.</span>
                         </li>
                     </ul>
                 </div>
@@ -462,7 +462,7 @@
                         </tr>
                         <tr class="hover:bg-slate-50 dark:hover:bg-slate-800/50">
                             <th class="py-3.5 px-4 font-semibold text-slate-500 dark:text-slate-400">NPSN</th>
-                            <td class="py-3.5 px-4 font-mono font-bold text-brand-600 dark:text-amber-400">60200659</td>
+                            <td id="dapodik-npsn" class="py-3.5 px-4 font-mono font-bold text-brand-600 dark:text-amber-400">60200659</td>
                         </tr>
                         <tr class="hover:bg-slate-50 dark:hover:bg-slate-800/50">
                             <th class="py-3.5 px-4 font-semibold text-slate-500 dark:text-slate-400">Jenjang / Status Sekolah</th>
@@ -470,7 +470,7 @@
                         </tr>
                         <tr class="hover:bg-slate-50 dark:hover:bg-slate-800/50">
                             <th class="py-3.5 px-4 font-semibold text-slate-500 dark:text-slate-400">Peringkat Akreditasi</th>
-                            <td class="py-3.5 px-4"><span class="px-2.5 py-1 rounded-md bg-emerald-100 text-emerald-800 dark:bg-emerald-500/20 dark:text-emerald-300 font-bold text-xs">Terakreditasi B</span></td>
+                            <td class="py-3.5 px-4"><span id="dapodik-akreditasi" class="px-2.5 py-1 rounded-md bg-emerald-100 text-emerald-800 dark:bg-emerald-500/20 dark:text-emerald-300 font-bold text-xs">Terakreditasi B</span></td>
                         </tr>
                         <tr class="hover:bg-slate-50 dark:hover:bg-slate-800/50">
                             <th class="py-3.5 px-4 font-semibold text-slate-500 dark:text-slate-400">Kurikulum Digunakan</th>
@@ -478,7 +478,7 @@
                         </tr>
                         <tr class="hover:bg-slate-50 dark:hover:bg-slate-800/50">
                             <th class="py-3.5 px-4 font-semibold text-slate-500 dark:text-slate-400">Alamat Lengkap</th>
-                            <td class="py-3.5 px-4">Jl. Poros Soagimalaha / Jl. Pendidikan, Desa Soa Gimalaha, Kec. Kota Maba, Kab. Halmahera Timur, Provinsi Maluku Utara 97862</td>
+                            <td id="dapodik-alamat" class="py-3.5 px-4">Jl. Poros Soagimalaha / Jl. Pendidikan, Desa Soa Gimalaha, Kec. Kota Maba, Kab. Halmahera Timur, Provinsi Maluku Utara 97862</td>
                         </tr>
                         <tr class="hover:bg-slate-50 dark:hover:bg-slate-800/50">
                             <th class="py-3.5 px-4 font-semibold text-slate-500 dark:text-slate-400">Waktu Penyelenggaraan</th>
@@ -486,7 +486,7 @@
                         </tr>
                         <tr class="hover:bg-slate-50 dark:hover:bg-slate-800/50">
                             <th class="py-3.5 px-4 font-semibold text-slate-500 dark:text-slate-400">Kontak Resmi & Pos-el</th>
-                            <td class="py-3.5 px-4">Telp/WA: 0853-1188-4115 | Email: smkn1maba@gmail.com | Web: smkn1haltim.sch.id</td>
+                            <td id="dapodik-kontak" class="py-3.5 px-4">Telp/WA: 0853-1188-4115 | Email: smkn1maba@gmail.com | Web: smkn1haltim.sch.id</td>
                         </tr>
                     </tbody>
                 </table>
@@ -494,7 +494,7 @@
         </div>
     </section>
 
-    <!-- ==================== 4. KOMPETENSI KEAHLIAN (JURUSAN) ==================== -->
+    <!-- ==================== 4. KOMPETENSI KEAHLIAN (JURUSAN DINAMIS) ==================== -->
     <section id="jurusan" class="py-16 lg:py-24 bg-slate-100/80 dark:bg-slate-900/50 border-y border-slate-200/80 dark:border-slate-800">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
@@ -511,130 +511,9 @@
                 </a>
             </div>
 
-            <!-- 3 Major Cards Grid -->
-            <div class="grid md:grid-cols-3 gap-8">
-                <!-- Card 1: TJKT / TKJ -->
-                <div class="bg-white dark:bg-slate-900 rounded-3xl overflow-hidden shadow-sm hover:shadow-xl border border-slate-200/80 dark:border-slate-800 transition-all duration-300 flex flex-col justify-between group">
-                    <div>
-                        <div class="h-48 bg-gradient-to-br from-blue-600 to-indigo-900 p-6 relative overflow-hidden flex flex-col justify-between">
-                            <div class="flex justify-between items-start relative z-10">
-                                <span class="px-3 py-1 rounded-full text-xs font-bold bg-white/20 text-white backdrop-blur-sm">Kode: TJKT / TKJ</span>
-                                <div class="w-12 h-12 rounded-2xl bg-white/15 backdrop-blur-md flex items-center justify-center text-white text-2xl group-hover:scale-110 transition">
-                                    <i class="fa-solid fa-network-wired"></i>
-                                </div>
-                            </div>
-                            <div class="relative z-10">
-                                <span class="text-xs text-blue-200 font-medium">Teknologi Informasi</span>
-                                <h3 class="font-display font-bold text-xl text-white leading-snug">Teknik Jaringan Komputer & Telekomunikasi</h3>
-                            </div>
-                            <i class="fa-solid fa-server text-8xl text-white/10 absolute -bottom-4 -right-4"></i>
-                        </div>
-
-                        <div class="p-6 space-y-4">
-                            <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
-                                Mempelajari perakitan komputer, administrasi server Linux/Windows, konfigurasi routing <strong>MikroTik & Cisco</strong>, instalasi jaringan <strong>Fiber Optik (FTTH)</strong>, hingga keamanan siber & sistem telekomunikasi.
-                            </p>
-                            <div class="space-y-2 pt-2">
-                                <div class="text-xs font-bold uppercase tracking-wider text-slate-400">Fokus Kompetensi Praktik:</div>
-                                <div class="flex flex-wrap gap-1.5">
-                                    <span class="px-2.5 py-1 rounded-lg text-xs font-medium bg-blue-50 dark:bg-blue-950/60 text-blue-700 dark:text-blue-300">MikroTik Routing</span>
-                                    <span class="px-2.5 py-1 rounded-lg text-xs font-medium bg-blue-50 dark:bg-blue-950/60 text-blue-700 dark:text-blue-300">Splicing Fiber Optik</span>
-                                    <span class="px-2.5 py-1 rounded-lg text-xs font-medium bg-blue-50 dark:bg-blue-950/60 text-blue-700 dark:text-blue-300">Admin Server & Cloud</span>
-                                    <span class="px-2.5 py-1 rounded-lg text-xs font-medium bg-blue-50 dark:bg-blue-950/60 text-blue-700 dark:text-blue-300">Jaringan Wireless</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="p-6 pt-0">
-                        <button onclick="openMajorModal('TJKT')" class="w-full py-3 px-4 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-brand-600 hover:text-white dark:hover:bg-brand-600 font-semibold text-sm transition flex items-center justify-center gap-2">
-                            <i class="fa-solid fa-circle-info"></i>
-                            <span>Lihat Kurikulum & Prospek Kerja</span>
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Card 2: TITL (Ketenagalistrikan) -->
-                <div class="bg-white dark:bg-slate-900 rounded-3xl overflow-hidden shadow-sm hover:shadow-xl border border-slate-200/80 dark:border-slate-800 transition-all duration-300 flex flex-col justify-between group">
-                    <div>
-                        <div class="h-48 bg-gradient-to-br from-amber-500 to-orange-700 p-6 relative overflow-hidden flex flex-col justify-between">
-                            <div class="flex justify-between items-start relative z-10">
-                                <span class="px-3 py-1 rounded-full text-xs font-bold bg-white/20 text-white backdrop-blur-sm">Kode: TITL</span>
-                                <div class="w-12 h-12 rounded-2xl bg-white/15 backdrop-blur-md flex items-center justify-center text-white text-2xl group-hover:scale-110 transition">
-                                    <i class="fa-solid fa-bolt-lightning"></i>
-                                </div>
-                            </div>
-                            <div class="relative z-10">
-                                <span class="text-xs text-amber-100 font-medium">Energi & Ketenagalistrikan</span>
-                                <h3 class="font-display font-bold text-xl text-white leading-snug">Teknik Instalasi Tenaga Listrik (Ketenagalistrikan)</h3>
-                            </div>
-                            <i class="fa-solid fa-plug-circle-bolt text-8xl text-white/10 absolute -bottom-4 -right-4"></i>
-                        </div>
-
-                        <div class="p-6 space-y-4">
-                            <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
-                                Membekali siswa dengan keahlian instalasi penerangan & tenaga listrik 1 fasa/3 fasa, perancangan panel distribusi, kendali motor listrik berbasis <strong>PLC (Programmable Logic Controller)</strong>, serta perawatan mesin listrik industri.
-                            </p>
-                            <div class="space-y-2 pt-2">
-                                <div class="text-xs font-bold uppercase tracking-wider text-slate-400">Fokus Kompetensi Praktik:</div>
-                                <div class="flex flex-wrap gap-1.5">
-                                    <span class="px-2.5 py-1 rounded-lg text-xs font-medium bg-amber-50 dark:bg-amber-950/60 text-amber-700 dark:text-amber-300">Instalasi Daya 3 Fasa</span>
-                                    <span class="px-2.5 py-1 rounded-lg text-xs font-medium bg-amber-50 dark:bg-amber-950/60 text-amber-700 dark:text-amber-300">Otomasi Industri & PLC</span>
-                                    <span class="px-2.5 py-1 rounded-lg text-xs font-medium bg-amber-50 dark:bg-amber-950/60 text-amber-700 dark:text-amber-300">Panel Kontrol Motor</span>
-                                    <span class="px-2.5 py-1 rounded-lg text-xs font-medium bg-amber-50 dark:bg-amber-950/60 text-amber-700 dark:text-amber-300">Standar PUIL & K3</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="p-6 pt-0">
-                        <button onclick="openMajorModal('TITL')" class="w-full py-3 px-4 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-amber-500 hover:text-slate-950 font-semibold text-sm transition flex items-center justify-center gap-2">
-                            <i class="fa-solid fa-circle-info"></i>
-                            <span>Lihat Kurikulum & Prospek Kerja</span>
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Card 3: TKP (Konstruksi & Perumahan) -->
-                <div class="bg-white dark:bg-slate-900 rounded-3xl overflow-hidden shadow-sm hover:shadow-xl border border-slate-200/80 dark:border-slate-800 transition-all duration-300 flex flex-col justify-between group">
-                    <div>
-                        <div class="h-48 bg-gradient-to-br from-emerald-600 to-teal-900 p-6 relative overflow-hidden flex flex-col justify-between">
-                            <div class="flex justify-between items-start relative z-10">
-                                <span class="px-3 py-1 rounded-full text-xs font-bold bg-white/20 text-white backdrop-blur-sm">Kode: TKP</span>
-                                <div class="w-12 h-12 rounded-2xl bg-white/15 backdrop-blur-md flex items-center justify-center text-white text-2xl group-hover:scale-110 transition">
-                                    <i class="fa-solid fa-helmet-safety"></i>
-                                </div>
-                            </div>
-                            <div class="relative z-10">
-                                <span class="text-xs text-emerald-100 font-medium">Teknologi Konstruksi & Properti</span>
-                                <h3 class="font-display font-bold text-xl text-white leading-snug">Teknik Konstruksi dan Perumahan</h3>
-                            </div>
-                            <i class="fa-solid fa-compass-drafting text-8xl text-white/10 absolute -bottom-4 -right-4"></i>
-                        </div>
-
-                        <div class="p-6 space-y-4">
-                            <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
-                                Mempelajari perencanaan konstruksi bangunan gedung & perumahan, gambar teknik berbantuan komputer (<strong>AutoCAD 2D/3D</strong>), ilmu ukur tanah (<em>surveying</em>), pelaksanaan konstruksi beton/baja/kayu, serta perhitungan <strong>RAB</strong>.
-                            </p>
-                            <div class="space-y-2 pt-2">
-                                <div class="text-xs font-bold uppercase tracking-wider text-slate-400">Fokus Kompetensi Praktik:</div>
-                                <div class="flex flex-wrap gap-1.5">
-                                    <span class="px-2.5 py-1 rounded-lg text-xs font-medium bg-emerald-50 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-300">Desain CAD Arsitektur</span>
-                                    <span class="px-2.5 py-1 rounded-lg text-xs font-medium bg-emerald-50 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-300">Estimasi Biaya (RAB)</span>
-                                    <span class="px-2.5 py-1 rounded-lg text-xs font-medium bg-emerald-50 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-300">Ukur Tanah / Theodolite</span>
-                                    <span class="px-2.5 py-1 rounded-lg text-xs font-medium bg-emerald-50 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-300">Konstruksi Bangunan</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="p-6 pt-0">
-                        <button onclick="openMajorModal('TKP')" class="w-full py-3 px-4 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-emerald-600 hover:text-white font-semibold text-sm transition flex items-center justify-center gap-2">
-                            <i class="fa-solid fa-circle-info"></i>
-                            <span>Lihat Kurikulum & Prospek Kerja</span>
-                        </button>
-                    </div>
-                </div>
+            <!-- Dynamic Major Cards Grid -->
+            <div id="jurusan-cards-grid" class="grid md:grid-cols-3 gap-8">
+                <!-- Populated via renderMajorCards() -->
             </div>
         </div>
     </section>
@@ -1010,7 +889,7 @@
                                 <i class="fa-solid fa-map-location-dot text-lg"></i>
                             </div>
                             <h3 class="font-bold text-sm text-slate-900 dark:text-white">Alamat Kampus</h3>
-                            <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+                            <p id="contact-card-alamat" class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
                                 Jl. Poros Soagimalaha / Jl. Pendidikan, Desa Soa Gimalaha, Kec. Kota Maba, Kab. Halmahera Timur, Maluku Utara 97862
                             </p>
                         </div>
@@ -1021,8 +900,8 @@
                             </div>
                             <h3 class="font-bold text-sm text-slate-900 dark:text-white">Telepon & Pos-el Resmi</h3>
                             <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
-                                Telp/WA: <strong>0853-1188-4115</strong><br>
-                                Email: smkn1maba@gmail.com<br>
+                                Telp/WA: <strong id="contact-card-telp">0853-1188-4115</strong><br>
+                                Email: <span id="contact-card-email">smkn1maba@gmail.com</span><br>
                                 Web: smkn1haltim.sch.id
                             </p>
                         </div>
@@ -1102,7 +981,8 @@
                 <!-- Col 1 -->
                 <div class="space-y-3">
                     <div class="flex items-center gap-3">
-                        <div class="w-10 h-10 rounded-xl bg-brand-600 flex items-center justify-center text-amber-400 font-bold">
+                        <img src="logo.png" onerror="this.style.display='none'; document.getElementById('footer-fallback-logo').classList.remove('hidden');" alt="Logo SMKN 1 Haltim" class="w-10 h-10 rounded-full object-cover bg-white p-0.5">
+                        <div id="footer-fallback-logo" class="hidden w-10 h-10 rounded-xl bg-brand-600 flex items-center justify-center text-amber-400 font-bold">
                             <i class="fa-solid fa-graduation-cap text-lg"></i>
                         </div>
                         <span class="font-display font-extrabold text-white text-lg">SMKN 1 HALTIM</span>
@@ -1126,24 +1006,24 @@
 
                 <!-- Col 3 -->
                 <div>
-                    <h4 class="font-display font-bold text-white text-sm mb-3">Tautan Akademik</h4>
+                    <h4 class="font-display font-bold text-white text-sm mb-3">Tautan Akademik & Admin</h4>
                     <ul class="space-y-2 text-xs">
                         <li><a href="#akademik" onclick="switchAcademicTab('ppdb')" class="hover:text-amber-400 transition">• Pendaftaran PPDB Online</a></li>
                         <li><a href="#akademik" onclick="switchAcademicTab('nisn')" class="hover:text-amber-400 transition">• Cek Status Siswa & Kelulusan (NISN)</a></li>
                         <li><a href="#akademik" onclick="switchAcademicTab('jadwal')" class="hover:text-amber-400 transition">• Jadwal Praktik Ruang Praktik Siswa (RPS)</a></li>
-                        <li><button onclick="openLoginModal()" class="hover:text-amber-400 transition text-left">• Login E-Rapor & Portal SIAKAD</button></li>
+                        <li><a href="dashboard.html" class="hover:text-amber-400 transition font-semibold text-amber-300">• Panel CMS Administrator (Dashboard)</a></li>
                     </ul>
                 </div>
 
                 <!-- Col 4 -->
                 <div>
                     <h4 class="font-display font-bold text-white text-sm mb-3">Alamat & Sekretariat</h4>
-                    <p class="text-xs leading-relaxed">
+                    <p id="footer-alamat" class="text-xs leading-relaxed">
                         Jl. Poros Soagimalaha / Jl. Pendidikan, Desa Soa Gimalaha, Kec. Kota Maba, Kab. Halmahera Timur, Maluku Utara 97862
                     </p>
                     <p class="text-xs mt-2 text-slate-300">
-                        <i class="fa-solid fa-phone mr-1 text-emerald-400"></i> 0853-1188-4115<br>
-                        <i class="fa-solid fa-envelope mr-1 text-amber-400"></i> smkn1maba@gmail.com
+                        <i class="fa-solid fa-phone mr-1 text-emerald-400"></i> <span id="footer-telp">0853-1188-4115</span><br>
+                        <i class="fa-solid fa-envelope mr-1 text-amber-400"></i> <span id="footer-email">smkn1maba@gmail.com</span>
                     </p>
                 </div>
             </div>
@@ -1171,7 +1051,7 @@
         </div>
     </div>
 
-    <!-- ==================== MODAL 2: PORTAL LOGIN SIAKAD ==================== -->
+    <!-- ==================== MODAL 2: PORTAL LOGIN SIAKAD & ADMIN CMS ==================== -->
     <div id="login-modal" class="fixed inset-0 z-50 hidden bg-slate-950/75 backdrop-blur-sm flex items-center justify-center p-4">
         <div class="bg-white dark:bg-slate-900 rounded-3xl max-w-md w-full shadow-2xl border border-slate-200 dark:border-slate-800 p-6 sm:p-8 relative">
             <button onclick="closeLoginModal()" class="w-9 h-9 rounded-full bg-slate-100 dark:bg-slate-800 hover:bg-rose-500 hover:text-white flex items-center justify-center absolute top-5 right-5 transition">
@@ -1183,7 +1063,7 @@
                     <i class="fa-solid fa-user-lock"></i>
                 </div>
                 <div>
-                    <h3 class="font-display font-bold text-lg text-slate-900 dark:text-white">Portal SIAKAD & E-Learning</h3>
+                    <h3 class="font-display font-bold text-lg text-slate-900 dark:text-white">Portal SIAKAD & CMS Admin</h3>
                     <p class="text-xs text-slate-500 dark:text-slate-400">SMK Negeri 1 Halmahera Timur (NPSN 60200659)</p>
                 </div>
             </div>
@@ -1192,13 +1072,13 @@
                 <div>
                     <label class="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">Peran Pengguna (Role)</label>
                     <select id="login-role" class="w-full px-4 py-2.5 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-sm">
-                        <option value="Siswa / Peserta Didik">Siswa / Peserta Didik (NISN)</option>
+                        <option value="Admin Dapodik / Operator">Admin Dapodik / Operator (Masuk CMS Dashboard)</option>
                         <option value="Guru / Tenaga Pendidik">Guru / Tenaga Pendidik (NIP / NUPTK)</option>
-                        <option value="Admin Dapodik / Operator">Operator Dapodik & Tata Usaha</option>
+                        <option value="Siswa / Peserta Didik">Siswa / Peserta Didik (NISN)</option>
                     </select>
                 </div>
                 <div>
-                    <label class="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">ID Pengguna (NISN / NIP / Username)</label>
+                    <label class="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">ID Pengguna (Username / NISN / NIP)</label>
                     <input type="text" id="login-user" required placeholder="Contoh: admin atau 0067891234" class="w-full px-4 py-2.5 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-sm">
                 </div>
                 <div>
@@ -1206,7 +1086,7 @@
                     <input type="password" id="login-pass" required placeholder="••••••••" class="w-full px-4 py-2.5 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-sm">
                 </div>
                 <button type="submit" id="btn-submit-login" class="w-full py-3 rounded-xl bg-brand-600 hover:bg-brand-700 text-white font-bold text-sm shadow-lg shadow-brand-600/20 transition">
-                    Masuk ke Dashboard SIAKAD
+                    Masuk ke Portal
                 </button>
             </form>
         </div>
@@ -1258,7 +1138,7 @@
     <!-- ==================== JAVASCRIPT APPLICATION LOGIC & GOOGLE SHEETS API ==================== -->
     <script>
         // =========================================================================
-        // KONFIGURASI URL GOOGLE APPS SCRIPT (TEMPEL URL WEB APP ANDA DI SINI)
+        // KONFIGURASI URL GOOGLE APPS SCRIPT (TEMPEL URL WEB APP V12 ANDA DI SINI)
         // =========================================================================
         const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzAovXeBORsV2_35PQBU8Ig4YXF07gntN6SfDLFtHiVZ7qlBY5IbP5RmVtMnQwXOSoi/exec';
 
@@ -1276,34 +1156,112 @@
             return await response.json();
         }
 
-        // Helper Pengambilan Seluruh Data Dinamis dari Google Sheets saat Website Dibuka
+        // Helper Sinkronisasi Penuh Seluruh Elemen dari Google Sheets
         async function syncFromGoogleSheets() {
             if (!SCRIPT_URL || SCRIPT_URL.includes('PASTE_URL')) return;
             try {
                 const res = await fetch(SCRIPT_URL);
                 const data = await res.json();
                 if (data.status === 'success') {
+                    // 1. Update Profil, Sambutan Kepsek, Visi Misi, Dapodik & Kontak
+                    if (data.profil) {
+                        const p = data.profil;
+                        const setTxt = (id, val) => { const el = document.getElementById(id); if (el && val) el.textContent = val; };
+                        setTxt('ui-nama-kepsek', p.namaKepsek);
+                        setTxt('ui-jabatan-kepsek', p.jabatanKepsek);
+                        if (p.fotoKepsek) { const img = document.getElementById('ui-foto-kepsek'); if (img) img.src = p.fotoKepsek; }
+                        setTxt('ui-salam-pembuka', p.salamPembuka);
+                        setTxt('ui-sambutan-1', p.sambutan1);
+                        setTxt('ui-sambutan-2', p.sambutan2);
+                        setTxt('ui-visi', p.visi);
+                        setTxt('ui-motto', p.motto);
+                        setTxt('ui-misi-1', p.misi1);
+                        setTxt('ui-misi-2', p.misi2);
+                        setTxt('ui-misi-3', p.misi3);
+                        setTxt('ui-misi-4', p.misi4);
+
+                        setTxt('top-npsn', p.npsn);
+                        setTxt('hero-npsn', p.npsn);
+                        setTxt('dapodik-npsn', p.npsn);
+
+                        setTxt('top-akreditasi', p.akreditasi);
+                        setTxt('dapodik-akreditasi', p.akreditasi);
+                        if (p.akreditasi) setTxt('hero-akreditasi', 'Negeri / ' + p.akreditasi);
+
+                        setTxt('dapodik-alamat', p.alamat);
+                        setTxt('contact-card-alamat', p.alamat);
+                        setTxt('footer-alamat', p.alamat);
+
+                        setTxt('hero-telepon', p.telepon);
+                        setTxt('contact-card-telp', p.telepon);
+                        setTxt('footer-telp', p.telepon);
+
+                        setTxt('top-email-text', p.email);
+                        setTxt('contact-card-email', p.email);
+                        setTxt('footer-email', p.email);
+                        if (p.email && p.telepon) {
+                            setTxt('dapodik-kontak', `Telp/WA: ${p.telepon} | Email: ${p.email} | Web: ${p.website || 'smkn1haltim.sch.id'}`);
+                        }
+
+                        setTxt('stat-val-program', p.statProgram);
+                        setTxt('stat-val-siswa', p.statSiswa);
+                        setTxt('stat-val-mitra', p.statMitra);
+                    }
+
+                    // 2. Update Kartu & Modal Kompetensi Keahlian (Jurusan)
+                    if (Array.isArray(data.jurusanList) && data.jurusanList.length > 0) {
+                        data.jurusanList.forEach(j => {
+                            const existing = majorDetails[j.kode] || {
+                                badgeColor: 'bg-blue-600 text-white',
+                                gradient: 'from-blue-600 to-indigo-900',
+                                icon: 'fa-network-wired',
+                                bgIcon: 'fa-server',
+                                tagClass: 'bg-blue-50 dark:bg-blue-950/60 text-blue-700 dark:text-blue-300',
+                                btnHover: 'hover:bg-brand-600 hover:text-white'
+                            };
+                            majorDetails[j.kode] = {
+                                ...existing,
+                                code: j.labelKode || j.kode,
+                                bidang: j.bidang || existing.bidang || 'Program Vokasi',
+                                title: j.nama || existing.title,
+                                desc: j.desc || existing.desc,
+                                tags: j.tags ? j.tags.split(',').map(s => s.trim()).filter(Boolean) : (existing.tags || []),
+                                rps: j.rps || existing.rps,
+                                modules: j.modules ? j.modules.split('|').map(s => s.trim()).filter(Boolean) : (existing.modules || []),
+                                careers: j.careers ? j.careers.split('|').map(s => s.trim()).filter(Boolean) : (existing.careers || [])
+                            };
+                        });
+                        renderMajorCards();
+                    }
+
+                    // 3. Update Direktori PKL
                     if (Array.isArray(data.pkl) && data.pkl.length > 0) {
                         pklData.length = 0;
                         data.pkl.forEach(item => pklData.push(item));
                         renderPKLTable();
                     }
+
+                    // 4. Update Data Siswa (Cek NISN)
                     if (data.siswa && Object.keys(data.siswa).length > 0) {
                         Object.assign(sampleStudents, data.siswa);
                         lookupNISN(document.getElementById('nisn-search-input').value || '0067891234');
                     }
+
+                    // 5. Update Berita & Kegiatan
                     if (Array.isArray(data.berita) && data.berita.length > 0) {
                         newsArticles.length = 0;
                         data.berita.forEach(item => newsArticles.push(item));
                         filterNews('ALL');
                     }
+
+                    // 6. Update Jadwal Praktik RPS
                     if (data.jadwal && Object.keys(data.jadwal).length > 0) {
                         Object.assign(scheduleData, data.jadwal);
                         filterSchedule('TJKT');
                     }
                 }
             } catch (err) {
-                console.warn('Gagal menyinkronkan data awal dari Google Sheets:', err);
+                console.warn('Gagal menyinkronkan data dari Google Sheets:', err);
             }
         }
 
@@ -1357,14 +1315,18 @@
 
         // 3. COPY OFFICIAL SCHOOL IDENTITY
         function copyOfficialInfo() {
-            const infoText = `SMK Negeri 1 Halmahera Timur (SMKN 1 Maba) | NPSN: 60200659 | Alamat: Jl. Poros Soagimalaha, Desa Soa Gimalaha, Kec. Kota Maba, Kab. Halmahera Timur, Maluku Utara 97862 | Telp: 0853-1188-4115 | Email: smkn1maba@gmail.com`;
+            const npsn = document.getElementById('dapodik-npsn').textContent;
+            const alamat = document.getElementById('dapodik-alamat').textContent;
+            const telp = document.getElementById('contact-card-telp').textContent;
+            const email = document.getElementById('contact-card-email').textContent;
+            const infoText = `SMK Negeri 1 Halmahera Timur (SMKN 1 Maba) | NPSN: ${npsn} | Alamat: ${alamat} | Telp: ${telp} | Email: ${email}`;
             const tempInput = document.createElement('textarea');
             tempInput.value = infoText;
             document.body.appendChild(tempInput);
             tempInput.select();
             document.execCommand('copy');
             document.body.removeChild(tempInput);
-            showToast('Data Sekolah Disalin!', 'Identitas NPSN 60200659 & alamat lengkap SMKN 1 Maba berhasil disalin ke papan klip.');
+            showToast('Data Sekolah Disalin!', `Identitas NPSN ${npsn} & alamat lengkap SMKN 1 Maba berhasil disalin ke papan klip.`);
         }
 
         // 4. DARK MODE & MOBILE MENU
@@ -1408,13 +1370,20 @@
             });
         }
 
-        // 6. KOMPETENSI KEAHLIAN (JURUSAN) DETAIL MODAL
+        // 6. KOMPETENSI KEAHLIAN (JURUSAN) CARDS & MODAL
         const majorDetails = {
             TJKT: {
                 code: 'TJKT / TKJ',
-                title: 'Teknik Jaringan Komputer dan Telekomunikasi',
+                bidang: 'Teknologi Informasi',
+                title: 'Teknik Jaringan Komputer & Telekomunikasi',
                 badgeColor: 'bg-blue-600 text-white',
-                desc: 'Program keahlian unggulan di SMKN 1 Halmahera Timur yang mencetak teknisi jaringan, administrator sistem, dan spesialis infrastruktur telekomunikasi handal.',
+                gradient: 'from-blue-600 to-indigo-900',
+                icon: 'fa-network-wired',
+                bgIcon: 'fa-server',
+                tagClass: 'bg-blue-50 dark:bg-blue-950/60 text-blue-700 dark:text-blue-300',
+                btnHover: 'hover:bg-brand-600 hover:text-white dark:hover:bg-brand-600',
+                desc: 'Mempelajari perakitan komputer, administrasi server Linux/Windows, konfigurasi routing MikroTik & Cisco, instalasi jaringan Fiber Optik (FTTH), hingga keamanan siber & sistem telekomunikasi.',
+                tags: ['MikroTik Routing', 'Splicing Fiber Optik', 'Admin Server & Cloud', 'Jaringan Wireless'],
                 rps: 'Laboratorium Komputer Terpadu, Bengkel Rak Server & MikroTik RouterOS, Alat Splicing Fiber Optik FTTH, Perangkat Access Point Outdoor.',
                 modules: [
                     'Perakitan Komputer, Instalasi Sistem Operasi & Virtualisasi Server',
@@ -1431,9 +1400,16 @@
             },
             TITL: {
                 code: 'TITL',
+                bidang: 'Energi & Ketenagalistrikan',
                 title: 'Teknik Instalasi Tenaga Listrik (Ketenagalistrikan)',
                 badgeColor: 'bg-amber-500 text-slate-950',
-                desc: 'Menyiapkan tenaga teknis profesional di bidang instalasi kelistrikan domestik, gedung bertingkat, pembangkit, serta sistem otomasi kendali motor listrik industri.',
+                gradient: 'from-amber-500 to-orange-700',
+                icon: 'fa-bolt-lightning',
+                bgIcon: 'fa-plug-circle-bolt',
+                tagClass: 'bg-amber-50 dark:bg-amber-950/60 text-amber-700 dark:text-amber-300',
+                btnHover: 'hover:bg-amber-500 hover:text-slate-950',
+                desc: 'Membekali siswa dengan keahlian instalasi penerangan & tenaga listrik 1 fasa/3 fasa, perancangan panel distribusi, kendali motor listrik berbasis PLC (Programmable Logic Controller), serta perawatan mesin listrik industri.',
+                tags: ['Instalasi Daya 3 Fasa', 'Otomasi Industri & PLC', 'Panel Kontrol Motor', 'Standar PUIL & K3'],
                 rps: 'Bengkel Ketenagalistrikan (RPS TITL), Trainer PLC (Programmable Logic Controller), Panel Distribusi Daya 3 Fasa, Alat Ukur Listrik Digital & K3.',
                 modules: [
                     'Instalasi Penerangan Listrik 1 Fasa dan Tenaga Listrik 3 Fasa sesuai PUIL',
@@ -1450,9 +1426,16 @@
             },
             TKP: {
                 code: 'TKP',
+                bidang: 'Teknologi Konstruksi & Properti',
                 title: 'Teknik Konstruksi dan Perumahan',
                 badgeColor: 'bg-emerald-600 text-white',
-                desc: 'Kompetensi keahlian yang berfokus pada perencanaan gambar arsitektur, pelaksanaan konstruksi bangunan gedung/perumahan, survei pemetaan tanah, dan manajemen biaya konstruksi.',
+                gradient: 'from-emerald-600 to-teal-900',
+                icon: 'fa-helmet-safety',
+                bgIcon: 'fa-compass-drafting',
+                tagClass: 'bg-emerald-50 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-300',
+                btnHover: 'hover:bg-emerald-600 hover:text-white',
+                desc: 'Mempelajari perencanaan konstruksi bangunan gedung & perumahan, gambar teknik berbantuan komputer (AutoCAD 2D/3D), ilmu ukur tanah (surveying), pelaksanaan konstruksi beton/baja/kayu, serta perhitungan RAB.',
+                tags: ['Desain CAD Arsitektur', 'Estimasi Biaya (RAB)', 'Ukur Tanah / Theodolite', 'Konstruksi Bangunan'],
                 rps: 'Studio Gambar Teknik & Lab AutoCAD, Peralatan Ukur Tanah (Theodolite & Waterpass), Bengkel Kerja Batu, Beton, Baja Ringan & Perkayuan.',
                 modules: [
                     'Menggambar Teknik Konstruksi Gedung 2D & Pemodelan 3D (AutoCAD / SketchUp)',
@@ -1468,6 +1451,49 @@
                 ]
             }
         };
+
+        function renderMajorCards() {
+            const grid = document.getElementById('jurusan-cards-grid');
+            if (!grid) return;
+            grid.innerHTML = Object.keys(majorDetails).map(key => {
+                const m = majorDetails[key];
+                const tagsHTML = (m.tags || []).map(t => `<span class="px-2.5 py-1 rounded-lg text-xs font-medium ${m.tagClass}">${t}</span>`).join('');
+                return `
+                    <div class="bg-white dark:bg-slate-900 rounded-3xl overflow-hidden shadow-sm hover:shadow-xl border border-slate-200/80 dark:border-slate-800 transition-all duration-300 flex flex-col justify-between group">
+                        <div>
+                            <div class="h-48 bg-gradient-to-br ${m.gradient} p-6 relative overflow-hidden flex flex-col justify-between">
+                                <div class="flex justify-between items-start relative z-10">
+                                    <span class="px-3 py-1 rounded-full text-xs font-bold bg-white/20 text-white backdrop-blur-sm">Kode: ${m.code}</span>
+                                    <div class="w-12 h-12 rounded-2xl bg-white/15 backdrop-blur-md flex items-center justify-center text-white text-2xl group-hover:scale-110 transition">
+                                        <i class="fa-solid ${m.icon}"></i>
+                                    </div>
+                                </div>
+                                <div class="relative z-10">
+                                    <span class="text-xs text-white/80 font-medium">${m.bidang}</span>
+                                    <h3 class="font-display font-bold text-xl text-white leading-snug">${m.title}</h3>
+                                </div>
+                                <i class="fa-solid ${m.bgIcon} text-8xl text-white/10 absolute -bottom-4 -right-4"></i>
+                            </div>
+
+                            <div class="p-6 space-y-4">
+                                <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">${m.desc}</p>
+                                <div class="space-y-2 pt-2">
+                                    <div class="text-xs font-bold uppercase tracking-wider text-slate-400">Fokus Kompetensi Praktik:</div>
+                                    <div class="flex flex-wrap gap-1.5">${tagsHTML}</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="p-6 pt-0">
+                            <button onclick="openMajorModal('${key}')" class="w-full py-3 px-4 rounded-xl bg-slate-100 dark:bg-slate-800 ${m.btnHover} font-semibold text-sm transition flex items-center justify-center gap-2">
+                                <i class="fa-solid fa-circle-info"></i>
+                                <span>Lihat Kurikulum & Prospek Kerja</span>
+                            </button>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
 
         function openMajorModal(code) {
             const data = majorDetails[code];
@@ -1493,7 +1519,7 @@
                             <i class="fa-solid fa-book-open-reader text-brand-600 dark:text-amber-400"></i> Materi & Kompetensi Utama
                         </h4>
                         <ul class="space-y-2 text-xs text-slate-600 dark:text-slate-300">
-                            ${data.modules.map(m => `<li class="flex items-start gap-2"><i class="fa-solid fa-check text-emerald-500 mt-0.5"></i><span>${m}</span></li>`).join('')}
+                            ${(data.modules || []).map(m => `<li class="flex items-start gap-2"><i class="fa-solid fa-check text-emerald-500 mt-0.5"></i><span>${m}</span></li>`).join('')}
                         </ul>
                     </div>
                     <div>
@@ -1501,7 +1527,7 @@
                             <i class="fa-solid fa-briefcase text-brand-600 dark:text-amber-400"></i> Prospek Karir & Studi Lanjut
                         </h4>
                         <ul class="space-y-2 text-xs text-slate-600 dark:text-slate-300">
-                            ${data.careers.map(c => `<li class="flex items-start gap-2"><i class="fa-solid fa-arrow-trend-up text-amber-500 mt-0.5"></i><span>${c}</span></li>`).join('')}
+                            ${(data.careers || []).map(c => `<li class="flex items-start gap-2"><i class="fa-solid fa-arrow-trend-up text-amber-500 mt-0.5"></i><span>${c}</span></li>`).join('')}
                         </ul>
                     </div>
                 </div>
@@ -1520,7 +1546,7 @@
             document.getElementById('major-modal').classList.add('hidden');
         }
 
-        // 7. SISTEM INFORMASI PKL / BKK INTERACTIVE TABLE (TERINTEGRASI GOOGLE SHEETS)
+        // 7. SISTEM INFORMASI PKL / BKK INTERACTIVE TABLE
         const pklData = [
             { mitra: 'UPT TIK & Lab Fakultas Teknik Unkhair', lokasi: 'Kota Ternate', jurusan: 'TJKT', kuota: '8 Siswa Kelas XII', status: 'Mitra Kampus Aktif' },
             { mitra: 'PT PLN (Persero) ULP Maba', lokasi: 'Kota Maba, Haltim', jurusan: 'TITL', kuota: '6 Siswa Kelas XII', status: 'Penempatan Aktif' },
@@ -1607,7 +1633,7 @@
             }
         }
 
-        // 8. LAYANAN AKADEMIK TABS & WIDGETS (TERINTEGRASI GOOGLE SHEETS)
+        // 8. LAYANAN AKADEMIK TABS & WIDGETS
         function switchAcademicTab(tab) {
             const tabs = ['ppdb', 'nisn', 'jadwal'];
             tabs.forEach(t => {
@@ -1655,7 +1681,6 @@
                     alamat: alamat
                 });
 
-                // Tambahkan juga ke memori pencarian NISN agar bisa langsung dicek
                 sampleStudents[nisn] = {
                     nama: nama,
                     nisn: nisn,
@@ -1706,7 +1731,7 @@
             window.print();
         }
 
-        // NISN Lookup Database & Handler (Sinkron dengan Tab Siswa di Google Sheets)
+        // NISN Lookup Database & Handler
         const sampleStudents = {
             '0067891234': {
                 nama: 'Fikri Haikal Tidore',
@@ -1899,7 +1924,7 @@
             `).join('');
         }
 
-        // 10. LOGIN MODAL & CONTACT FORM HANDLERS (TERINTEGRASI GOOGLE SHEETS)
+        // 10. LOGIN MODAL & CONTACT FORM HANDLERS (TERINTEGRASI SESSION DASHBOARD)
         function openLoginModal() {
             document.getElementById('login-modal').classList.remove('hidden');
         }
@@ -1919,6 +1944,15 @@
             const pass = document.getElementById('login-pass').value.trim();
 
             try {
+                // Mode lokal jika SCRIPT_URL belum diisi
+                if (!SCRIPT_URL || SCRIPT_URL.includes('PASTE_URL')) {
+                    if (user === 'admin' && pass === 'admin123') {
+                        sessionStorage.setItem('smkn1haltim_admin_session', JSON.stringify({ username: user, role: 'Administrator' }));
+                        window.location.href = 'dashboard.html';
+                        return;
+                    }
+                }
+
                 const res = await postToSheets({
                     action: 'login',
                     role: role,
@@ -1926,16 +1960,23 @@
                     password: pass
                 });
 
-                closeLoginModal();
-                if (res && res.verified && role.includes('Admin')) {
-                    showToast('Login Admin Terverifikasi!', 'Mengalihkan ke halaman CMS Dashboard...');
-                    setTimeout(() => { window.location.href = 'dashboard.html'; }, 1200);
+                if (res && res.verified) {
+                    closeLoginModal();
+                    if (role.includes('Admin') || (res.role && res.role.includes('Admin'))) {
+                        sessionStorage.setItem('smkn1haltim_admin_session', JSON.stringify({
+                            username: user,
+                            role: res.role || role
+                        }));
+                        showToast('Login Admin Terverifikasi!', 'Mengalihkan langsung ke halaman CMS Dashboard...');
+                        setTimeout(() => { window.location.href = 'dashboard.html'; }, 900);
+                    } else {
+                        showToast('Akses SIAKAD Terverifikasi', `Selamat datang, ${user} (${res.role || role}). Riwayat login Anda telah tercatat.`);
+                    }
                 } else {
-                    showToast('Akses SIAKAD Terverifikasi', `Selamat datang, ${user} (${role}). Riwayat login Anda telah tercatat di Google Sheets.`);
+                    showToast('Login Gagal!', 'Username atau Password salah. Silakan periksa kembali kredensial Anda.', 'info');
                 }
             } catch (err) {
-                closeLoginModal();
-                showToast('Akses SIAKAD Aktif', `Selamat datang, ${user} (${role}).`);
+                showToast('Gagal Terhubung', 'Pastikan SCRIPT_URL Google Apps Script sudah benar.', 'info');
             } finally {
                 btn.disabled = false;
                 btn.innerHTML = originalHTML;
@@ -1974,6 +2015,7 @@
 
         // INITIALIZE ON WINDOW LOAD
         window.onload = function () {
+            renderMajorCards();
             renderPKLTable();
             lookupNISN('0067891234');
             filterSchedule('TJKT');
